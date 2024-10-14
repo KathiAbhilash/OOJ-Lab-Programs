@@ -4,45 +4,38 @@ class Subject {
     int subjectMarks;
     int credits;
     int grade;
-
-    // Method to calculate grade based on marks
     public void calculateGrade() {
         if (subjectMarks >= 90) {
-            grade = 10; // O grade
+            grade = 10; 
         } else if (subjectMarks >= 80) {
-            grade = 9; // A grade
+            grade = 9; 
         } else if (subjectMarks >= 70) {
-            grade = 8; // B grade
+            grade = 8;
         } else if (subjectMarks >= 60) {
-            grade = 7; // C grade
+            grade = 7; 
         } else if (subjectMarks >= 50) {
-            grade = 6; // D grade
+            grade = 6;
         } else if (subjectMarks >= 40) {
-            grade = 5; // E grade
+            grade = 5; 
         } else {
-            grade = 0; // F grade (fail)
+            grade = 0; 
         }
     }
 }
-
 class Student {
     String name;
     String usn;
     double SGPA;
     Subject subject[];
     Scanner s;
-
-    // Constructor
     Student() {
         int i;
-        subject = new Subject[8]; // Assuming there are 8 subjects
+        subject = new Subject[8]; 
         for (i = 0; i < 8; i++) {
-            subject[i] = new Subject(); // create array of n objects
+            subject[i] = new Subject(); 
         }
         s = new Scanner(System.in);
     }
-
-    // Method to read student details
     public void getStudentDetails() {
         System.out.print("Enter student name: ");
         name = s.nextLine();
@@ -50,27 +43,25 @@ class Student {
         usn = s.nextLine();
     }
 
-    // Method to read marks and credits
+    
     public void getMarks() {
         for (int i = 0; i < 8; i++) {
             System.out.print("Enter marks for subject " + (i + 1) + ": ");
             subject[i].subjectMarks = s.nextInt();
             System.out.print("Enter credits for subject " + (i + 1) + ": ");
             subject[i].credits = s.nextInt();
-            subject[i].calculateGrade(); // Calculate grade for the subject
-
-            // Validate marks
+            subject[i].calculateGrade(); 
+            
             if (subject[i].subjectMarks > 100) {
                 System.out.println("Invalid marks, should not exceed 100.");
-                subject[i].subjectMarks = 0; // Set to 0 or handle as necessary
+                subject[i].subjectMarks = 0;
             } else if (subject[i].subjectMarks < 0) {
                 System.out.println("Invalid marks, should not be negative.");
-                subject[i].subjectMarks = 0; // Set to 0 or handle as necessary
+                subject[i].subjectMarks = 0; 
             }
         }
     }
 
-    // Method to compute SGPA
     public void computeSGPA() {
         double totalGradePoints = 0;
         int totalCredits = 0;
@@ -87,7 +78,6 @@ class Student {
         }
     }
 
-    // Method to display student details and SGPA
     public void displayResults() {
         System.out.println("Name: " + name);
         System.out.println("USN: " + usn);
